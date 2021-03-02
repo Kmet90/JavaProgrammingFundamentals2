@@ -3,7 +3,6 @@ package Songs_04;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,10 +13,10 @@ public class Main {
         List<Songs> songs = new ArrayList<>();
 
         for (int i = 0; i < numbersOfSongs; i++) {
-            String[] data = scanner.nextLine().split(" ");
+            String[] data = scanner.nextLine().split("_");
             String type = data[0];
-            String name= data[1];
-            String time= data[2];
+            String name = data[1];
+            String time = data[2];
 
             Songs song = new Songs();
 
@@ -29,11 +28,16 @@ public class Main {
         }
         String typeList = scanner.nextLine();
 
-        List<Songs> filterSong = songs.stream().filter(e->e.getTypeList()
-                .equals(typeList)).collect(Collectors.toList());
-
-        for (Songs song : filterSong) {
-            System.out.println(song.getName());
+        if (typeList.equals("all")) {
+            for (Songs song : songs) {
+                System.out.println(song.getName());
+            }
+        } else {
+            for (Songs song : songs) {
+                if (song.getTypeList().equals(typeList)){
+                    System.out.println(song.getName());
+                }
+            }
         }
     }
 }
