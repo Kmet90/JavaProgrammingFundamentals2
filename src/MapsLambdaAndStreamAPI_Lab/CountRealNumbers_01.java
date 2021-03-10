@@ -1,5 +1,6 @@
 package MapsLambdaAndStreamAPI_Lab;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class CountRealNumbers_01 {
         double[] numbers = Arrays.stream(scanner.nextLine().split(" "))
                 .mapToDouble(Double::parseDouble)
                 .toArray();
+
         Map<Double, Integer> counts = new TreeMap<>();
 
         for (Double number : numbers) {
@@ -20,6 +22,9 @@ public class CountRealNumbers_01 {
             }
             counts.put(number, counts.get(number) + 1);
         }
-
+        for (Map.Entry<Double, Integer> entry: counts.entrySet()) {
+            DecimalFormat df = new DecimalFormat("#.#######");
+            System.out.printf("%s -> %d%n", df.format(entry.getKey()), entry.getValue());
+        }
     }
 }
