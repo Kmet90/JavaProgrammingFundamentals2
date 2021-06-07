@@ -1,10 +1,11 @@
 public class Demo {
     public static void main(String[] args) {
+String text = printText("Java");
 
-        System.out.println(pri);
     }
-    public void printText(String text){
-        System.out.println("I vove" + text);
+    public printText(String text){
+        System.out.println("I love" + text);
+        return text;
     }
 
 }
